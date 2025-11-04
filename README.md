@@ -1,32 +1,32 @@
-# 📱 Aplicación de Gestión Financiera Personal
+# Aplicación de Gestión Financiera Personal
 
-## 🏆 Proyecto Flutter - Arquitectura Limpia y Material You
+## Proyecto Flutter - Arquitectura Limpia y Material You
 
 Una aplicación móvil completa para gestión de finanzas personales desarrollada con Flutter, implementando Clean Architecture, Navigation 2.0, y principios de Material You.
 
 ---
 
-## 🎯 **DESCRIPCIÓN DEL PROYECTO**
+## **DESCRIPCIÓN DEL PROYECTO**
 
 ### **Tipo de Aplicación**: Gestión de Finanzas Personales
 
 Esta aplicación resuelve el problema real de **control y análisis de gastos personales** ofreciendo:
 
-- ✅ **Seguimiento de gastos** con categorización automática
-- ✅ **Análisis estadístico** con gráficas interactivas  
-- ✅ **Gestión de sesiones** con seguridad bancaria
-- ✅ **Múltiples temas** adaptativos Material You
-- ✅ **Funcionamiento offline** con sincronización
+- **Seguimiento de gastos** con categorización automática
+- **Análisis estadístico** con gráficas interactivas  
+- **Gestión de sesiones** con seguridad bancaria
+- **Múltiples temas** adaptativos Material You
+- **Funcionamiento offline** con sincronización
 
 ---
 
-## 🏗️ **ARQUITECTURA CLEAN IMPLEMENTADA**
+## **ARQUITECTURA CLEAN IMPLEMENTADA**
 
 ### **Feature-First Organization**
 
 ```
 lib/
-├── core/                           # 🔧 Núcleo de la aplicación
+├── core/                           # Núcleo de la aplicación
 │   ├── di/                        # Inyección de dependencias
 │   ├── error/                     # Manejo global de errores
 │   ├── network/                   # Servicios de red
@@ -36,23 +36,23 @@ lib/
 │   ├── routes/                    # Navegación 2.0
 │   └── presentation/              # Pantallas principales
 │
-├── features/                      # 🎯 Features por dominio
-│   ├── autenticacion_usuario/     # 🔐 Autenticación
+├── features/                      # Features por dominio
+│   ├── autenticacion_usuario/     # Autenticación
 │   │   ├── domain/               # Entidades, casos de uso
 │   │   ├── data/                 # Repositorios, APIs
 │   │   └── presentation/         # UI, Providers, Widgets
 │   │
-│   ├── gestion_gastos/           # 💰 Gestión Financiera
+│   ├── gestion_gastos/           # Gestión Financiera
 │   │   ├── domain/               # Lógica de negocio
 │   │   ├── data/                 # Persistencia de datos
 │   │   └── presentation/         # Interfaz de usuario
 │   │
-│   └── estadisticas/             # 📊 Análisis y Gráficas
+│   └── estadisticas/             # Análisis y Gráficas
 │       ├── domain/               # Cálculos estadísticos
 │       ├── data/                 # Procesamiento de datos
 │       └── presentation/         # Gráficas interactivas
 │
-└── main.dart                      # 🚀 Punto de entrada
+└── main.dart                      # Punto de entrada
 ```
 
 ### **Principios SOLID Aplicados**
@@ -67,7 +67,7 @@ lib/
 
 ---
 
-## 🚀 **NAVEGACIÓN 2.0 CON GO_ROUTER**
+## **NAVEGACIÓN 2.0 CON GO_ROUTER**
 
 ### **Sistema de Navegación Declarativa**
 
@@ -75,16 +75,16 @@ lib/
 class RouterAplicacion {
   late final GoRouter router = GoRouter(
     initialLocation: RutasAplicacion.splashRuta,
-    refreshListenable: estadoAplicacion,     // 🔄 Estado reactivo
+    refreshListenable: estadoAplicacion,     // Estado reactivo
     routes: [
-      // 🏠 Rutas principales
+      // Rutas principales
       GoRoute(path: '/', builder: (context, state) => PantallaSplash()),
       GoRoute(path: '/login', builder: (context, state) => PaginaInicioSesion()),
       GoRoute(path: '/gastos', builder: (context, state) => PaginaGastos()),
       GoRoute(path: '/estadisticas', builder: (context, state) => PaginaEstadisticas()),
     ],
     redirect: (context, state) {
-      // 🛡️ Guards de autenticación
+      // Guards de autenticación
       final estadoAuth = estadoAplicacion.estadoAutenticacion;
       // Lógica de redirección inteligente
     }
@@ -93,20 +93,20 @@ class RouterAplicacion {
 ```
 
 ### **Características Implementadas**
-- 🛡️ **Guards de Autenticación**: Protección automática de rutas privadas
-- 🔄 **Redirecciones Inteligentes**: Basadas en estado de autenticación  
-- 📝 **Navegación Tipada**: Helper class para navegación segura
-- ⚡ **Estado Reactivo**: Actualización automática según cambios
-- 🏗️ **Rutas Anidadas**: Organización jerárquica de pantallas
+- **Guards de Autenticación**: Protección automática de rutas privadas
+- **Redirecciones Inteligentes**: Basadas en estado de autenticación  
+- **Navegación Tipada**: Helper class para navegación segura
+- **Estado Reactivo**: Actualización automática según cambios
+- **Rutas Anidadas**: Organización jerárquica de pantallas
 
 ---
 
-## 📊 **GESTIÓN DE ESTADO GLOBAL**
+## **GESTIÓN DE ESTADO GLOBAL**
 
 ### **Sistema Provider Robusto**
 
 ```dart
-// 🎛️ Configuración MultiProvider
+// Configuración MultiProvider
 MultiProvider(
   providers: [
     ChangeNotifierProvider<EstadoAplicacion>(),
@@ -119,8 +119,8 @@ MultiProvider(
   child: DetectorActividad(
     child: Consumer2<ProveedorTema, EstadoAplicacion>(
       builder: (context, tema, estado, child) => MaterialApp.router(
-        theme: tema.themeData,        // 🎨 Tema dinámico
-        routerConfig: router.router,  // 🧭 Router reactivo
+        theme: tema.themeData,        // Tema dinámico
+        routerConfig: router.router,  // Router reactivo
       ),
     ),
   ),
@@ -131,25 +131,25 @@ MultiProvider(
 
 | Provider | Responsabilidad | Estado Gestionado |
 |----------|----------------|-------------------|
-| `EstadoAplicacion` | 🔐 Estado central de autenticación | Sesión del usuario |
-| `ProveedorTema` | 🎨 Gestión de temas dinámicos | Tema actual y preferencias |
-| `ProveedorGastos` | 💰 Gestión de transacciones | CRUD de gastos financieros |
-| `ProveedorEstadisticas` | 📊 Análisis de datos | Gráficas y métricas |
-| `ProveedorAutenticacion` | 🔑 Control de sesiones | Login/logout y validación |
+| `EstadoAplicacion` | Estado central de autenticación | Sesión del usuario |
+| `ProveedorTema` | Gestión de temas dinámicos | Tema actual y preferencias |
+| `ProveedorGastos` | Gestión de transacciones | CRUD de gastos financieros |
+| `ProveedorEstadisticas` | Análisis de datos | Gráficas y métricas |
+| `ProveedorAutenticacion` | Control de sesiones | Login/logout y validación |
 
 ---
 
-## 🎨 **MATERIAL YOU Y DISEÑO ADAPTABLE**
+## **MATERIAL YOU Y DISEÑO ADAPTABLE**
 
 ### **Sistema de Temas Dinámico**
 
 ```dart
-// 🌈 Temas implementados
+// Temas implementados
 enum TipoTema {
-  bancarioAzul,      // 🏦 Profesional y confiable
-  oscuroElegante,    // 🌙 Moderno para uso nocturno
-  claroMinimal,      // ☀️ Limpio y minimalista  
-  doradoPremium,     // ⭐ Exclusivo y lujoso
+  bancarioAzul,      // Profesional y confiable
+  oscuroElegante,    // Moderno para uso nocturno
+  claroMinimal,      // Limpio y minimalista  
+  doradoPremium,     // Exclusivo y lujoso
 }
 ```
 
@@ -165,13 +165,13 @@ enum TipoTema {
 ### **Diseño Responsivo**
 
 ```dart
-// 📱 Widgets adaptativos
+// Widgets adaptativos
 LayoutBuilder(
   builder: (context, constraints) {
     if (constraints.maxWidth > 768) {
-      return TabletLayout();     // 📟 Diseño para tablets
+      return TabletLayout();     // Diseño para tablets
     } else {
-      return MobileLayout();     // 📱 Diseño para móviles
+      return MobileLayout();     // Diseño para móviles
     }
   },
 )
@@ -179,20 +179,20 @@ LayoutBuilder(
 
 ---
 
-## 🔐 **SERVICIOS Y ALMACENAMIENTO**
+## **SERVICIOS Y ALMACENAMIENTO**
 
 ### **Arquitectura Multi-Nivel**
 
 ```dart
-// 🏪 Almacenamiento híbrido
+// Almacenamiento híbrido
 class ServicioAlmacenamientoLocal {
-  final SharedPreferences preferencias;        // 📝 Datos generales
-  final FlutterSecureStorage almacenamientoSeguro;  // 🔒 Datos sensibles
+  final SharedPreferences preferencias;        // Datos generales
+  final FlutterSecureStorage almacenamientoSeguro;  // Datos sensibles
   
-  // 💾 Persistencia general
+  // Persistencia general
   Future<void> guardarPreferencia(String clave, String valor);
   
-  // 🔐 Almacenamiento encriptado
+  // Almacenamiento encriptado
   Future<void> guardarDatoSeguro(String clave, String valor);
 }
 ```
@@ -201,16 +201,16 @@ class ServicioAlmacenamientoLocal {
 
 | Servicio | Función | Tecnología |
 |----------|---------|------------|
-| `ServicioConectividad` | 🌐 Monitoreo de red | connectivity_plus |
-| `ServicioCifrado` | 🔒 Encriptación AES | encrypt package |
-| `ServicioAlmacenamiento` | 💾 Persistencia dual | secure_storage + shared_preferences |
-| `ServicioInactividad` | ⏰ Control de timeout | Timer personalizado |
-| `ManejadorErrores` | 🚨 Gestión de errores | Interceptores Dio |
+| `ServicioConectividad` | Monitoreo de red | connectivity_plus |
+| `ServicioCifrado` | Encriptación AES | encrypt package |
+| `ServicioAlmacenamiento` | Persistencia dual | secure_storage + shared_preferences |
+| `ServicioInactividad` | Control de timeout | Timer personalizado |
+| `ManejadorErrores` | Gestión de errores | Interceptores Dio |
 
 ### **Seguridad Implementada**
 
 ```dart
-// 🔒 Encriptación de nivel bancario
+// Encriptación de nivel bancario
 class ServicioCifrado {
   late final Encrypter cifrador;
   late final IV vectorInicializacion;
@@ -220,19 +220,19 @@ class ServicioCifrado {
     return cifrado.base64;
   }
   
-  // 🛡️ Hash seguro para validación
+  // Hash seguro para validación
   String generarHashSeguro(String entrada);
 }
 ```
 
 ---
 
-## 🏭 **INYECCIÓN DE DEPENDENCIAS**
+## **INYECCIÓN DE DEPENDENCIAS**
 
 ### **Sistema get_it Robusto**
 
 ```dart
-// 🏗️ Configuración de dependencias
+// Configuración de dependencias
 class InyeccionDependencias {
   static Future<void> inicializar() async {
     await _registrarDependenciasExternas();  // SharedPreferences, Connectivity
@@ -242,7 +242,7 @@ class InyeccionDependencias {
   }
 }
 
-// 🎯 Localizador de servicios
+// Localizador de servicios
 class LocalizadorServicios {
   static ServicioAlmacenamientoLocal get almacenamiento => getIt();
   static ServicioConectividad get conectividad => getIt();
@@ -251,76 +251,76 @@ class LocalizadorServicios {
 ```
 
 ### **Ventajas del Sistema**
-- ✅ **Desacoplamiento total** entre capas
-- ✅ **Testabilidad mejorada** con mocks inyectables
-- ✅ **Gestión de ciclo de vida** automática
-- ✅ **Configuración centralizada** y mantenible
+- **Desacoplamiento total** entre capas
+- **Testabilidad mejorada** con mocks inyectables
+- **Gestión de ciclo de vida** automática
+- **Configuración centralizada** y mantenible
 
 ---
 
-## 📦 **DEPENDENCIAS Y TECNOLOGÍAS**
+## **DEPENDENCIAS Y TECNOLOGÍAS**
 
 ### **Core Framework**
 ```yaml
 dependencies:
-  flutter: sdk: flutter           # 🚀 Framework base
-  provider: ^6.1.2              # 📊 Gestión de estado
-  go_router: ^14.2.7            # 🧭 Navegación 2.0
-  get_it: ^7.6.7               # 💉 Inyección de dependencias
+  flutter: sdk: flutter           # Framework base
+  provider: ^6.1.2              # Gestión de estado
+  go_router: ^14.2.7            # Navegación 2.0
+  get_it: ^7.6.7               # Inyección de dependencias
 ```
 
 ### **Networking & Storage**
 ```yaml
-  dio: ^5.4.0                   # 🌐 Cliente HTTP avanzado
-  http: ^1.1.0                 # 📡 Cliente HTTP básico
-  connectivity_plus: ^5.0.2     # 📶 Monitoreo de conectividad
-  shared_preferences: ^2.2.2    # 💾 Almacenamiento local
-  flutter_secure_storage: ^9.0.0 # 🔒 Almacenamiento seguro
-  encrypt: ^5.0.1              # 🔐 Encriptación AES
+  dio: ^5.4.0                   # Cliente HTTP avanzado
+  http: ^1.1.0                 # Cliente HTTP básico
+  connectivity_plus: ^5.0.2     # Monitoreo de conectividad
+  shared_preferences: ^2.2.2    # Almacenamiento local
+  flutter_secure_storage: ^9.0.0 # Almacenamiento seguro
+  encrypt: ^5.0.1              # Encriptación AES
 ```
 
 ### **UI & UX**
 ```yaml
-  google_fonts: ^6.2.1         # 🎨 Tipografías modernas
-  animate_do: ^3.3.4          # ✨ Animaciones fluidas
-  fl_chart: ^0.65.0           # 📊 Gráficas interactivas
-  shimmer: ^3.0.0             # ⏳ Efectos de carga
+  google_fonts: ^6.2.1         # Tipografías modernas
+  animate_do: ^3.3.4          # Animaciones fluidas
+  fl_chart: ^0.65.0           # Gráficas interactivas
+  shimmer: ^3.0.0             # Efectos de carga
 ```
 
 ### **Forms & Utilities**
 ```yaml
-  flutter_form_builder: ^10.2.0 # 📝 Construcción de formularios
-  form_builder_validators: ^11.0.0 # ✅ Validaciones robustas
-  fluttertoast: ^9.0.0        # 🔔 Notificaciones toast
-  intl: ^0.20.2               # 🌍 Internacionalización
+  flutter_form_builder: ^10.2.0 # Construcción de formularios
+  form_builder_validators: ^11.0.0 # Validaciones robustas
+  fluttertoast: ^9.0.0        # Notificaciones toast
+  intl: ^0.20.2               # Internacionalización
 ```
 
 ---
 
-## 🏆 **FUNCIONALIDADES PRINCIPALES**
+## **FUNCIONALIDADES PRINCIPALES**
 
-### **1. 🔐 Sistema de Autenticación Completo**
+### **1. Sistema de Autenticación Completo**
 - **Login/Registro** con validación robusta
 - **Gestión de sesiones** con timeout automático
 - **Almacenamiento seguro** de credenciales
 - **Detección de actividad** del usuario
 - **Cifrado de datos** sensibles
 
-### **2. 💰 Gestión Financiera Avanzada**
+### **2. Gestión Financiera Avanzada**
 - **CRUD completo** de gastos personales
 - **Categorización automática** de transacciones
 - **Resumen financiero** en tiempo real
 - **Validación y formateo** de montos
 - **Filtrado y búsqueda** de gastos
 
-### **3. 📊 Estadísticas Interactivas**
+### **3. Estadísticas Interactivas**
 - **Gráficos de torta** por categorías
 - **Gráficos de barras** comparativas
 - **Filtros de período** (mensual, trimestral, personalizado)
 - **Identificación automática** de categoría con más gastos
 - **Métricas financieras** detalladas
 
-### **4. 🎨 Sistema de Temas Dinámico**
+### **4. Sistema de Temas Dinámico**
 - **4 temas profesionales** implementados
 - **Cambio en tiempo real** sin reinicio
 - **Persistencia de preferencias** del usuario
@@ -329,32 +329,32 @@ dependencies:
 
 ---
 
-## 🔍 **MÉTRICAS DE CALIDAD**
+## **MÉTRICAS DE CALIDAD**
 
 ### **Análisis de Código**
-- ✅ **0 errores de compilación**
-- ✅ **Warnings mínimos** (solo deprecaciones menores)
-- ✅ **Separación clara** de responsabilidades
-- ✅ **Nomenclatura consistente** en español
-- ✅ **Reutilización alta** de componentes
+- **0 errores de compilación**
+- **Warnings mínimos** (solo deprecaciones menores)
+- **Separación clara** de responsabilidades
+- **Nomenclatura consistente** en español
+- **Reutilización alta** de componentes
 
 ### **Arquitectura**
-- ✅ **Clean Architecture** completamente implementada
-- ✅ **Feature-first** organization
-- ✅ **SOLID principles** aplicados consistentemente
-- ✅ **Repository pattern** en todas las features
-- ✅ **Dependency Injection** robusta
+- **Clean Architecture** completamente implementada
+- **Feature-first** organization
+- **SOLID principles** aplicados consistentemente
+- **Repository pattern** en todas las features
+- **Dependency Injection** robusta
 
 ### **UI/UX**
-- ✅ **Material You** guidelines seguidas
-- ✅ **Responsive design** para múltiples pantallas
-- ✅ **Animaciones fluidas** y consistentes
-- ✅ **Accesibilidad** considerada en componentes
-- ✅ **Performance optimizada** con widgets const
+- **Material You** guidelines seguidas
+- **Responsive design** para múltiples pantallas
+- **Animaciones fluidas** y consistentes
+- **Accesibilidad** considerada en componentes
+- **Performance optimizada** con widgets const
 
 ---
 
-## 🚦 **INSTALACIÓN Y EJECUCIÓN**
+## **INSTALACIÓN Y EJECUCIÓN**
 
 ### **Requisitos**
 - Flutter 3.35.0 o superior
@@ -382,20 +382,20 @@ flutter run
 ### **Configuración Adicional**
 
 ```dart
-// 🔧 Configuración de base URL en lib/core/network/api_fetch_http.dart
+// Configuración de base URL en lib/core/network/api_fetch_http.dart
 static const String _baseUrl = 'http://your-api-server.com';
 
-// ⏰ Configuración de timeout en lib/core/security/servicio_timeout_avanzado.dart
+// Configuración de timeout en lib/core/security/servicio_timeout_avanzado.dart
 static const int _inactivityTimeout = 300; // segundos
 ```
 
 ---
 
-## 🧪 **TESTING Y VALIDACIÓN**
+## **TESTING Y VALIDACIÓN**
 
 ### **Tipos de Test Implementables**
 ```dart
-// 🔬 Unit Tests
+// Unit Tests
 test('ServicioCifrado debe cifrar y descifrar correctamente', () {
   final servicio = ServicioCifrado();
   final textoOriginal = 'datos sensibles';
@@ -404,37 +404,31 @@ test('ServicioCifrado debe cifrar y descifrar correctamente', () {
   expect(descifrado, equals(textoOriginal));
 });
 
-// 🎭 Widget Tests
+// Widget Tests
 testWidgets('PaginaGastos debe mostrar lista de gastos', (tester) async {
   await tester.pumpWidget(MyApp());
   expect(find.text('Mis Gastos'), findsOneWidget);
 });
 
-// 🎯 Integration Tests
+// Integration Tests
 // Flujos completos de usuario end-to-end
 ```
 
 ---
 
-## 📈 **ROADMAP FUTURO**
+## **ROADMAP FUTURO**
 
 ### **Versión 2.0 - Planificada**
-- [ ] 🌐 **Sincronización en la nube** con Firebase
-- [ ] 📱 **Notificaciones push** para recordatorios
-- [ ] 🔄 **Backup automático** de datos
-- [ ] 📊 **Dashboard web** complementario
-- [ ] 🤖 **IA para categorización** automática inteligente
+- [ ] **Sincronización en la nube** con Firebase
+- [ ] **Notificaciones push** para recordatorios
+- [ ] **Backup automático** de datos
+- [ ] **Dashboard web** complementario
+- [ ] **IA para categorización** automática inteligente
 
 ### **Versión 2.5 - Futura**  
-- [ ] 👥 **Gastos compartidos** familiares/grupales
-- [ ] 💳 **Integración bancaria** real via APIs
-- [ ] 🏦 **Múltiples cuentas** y presupuestos
-- [ ] 📈 **Predicciones** financieras con ML
-- [ ] 🌍 **Soporte multi-idioma** completo
+- [ ] **Gastos compartidos** familiares/grupales
+- [ ] **Integración bancaria** real via APIs
+- [ ] **Múltiples cuentas** y presupuestos
+- [ ] **Predicciones** financieras con ML
+- [ ] **Soporte multi-idioma** completo
 
----
-
- y crear Pull Request
-```
-
---- 
